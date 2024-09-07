@@ -34,14 +34,16 @@ extension XCTestCase {
     with testCases: [AlgorithmTestCase<Input, Output>],
     algorithm: (Input) -> Output
   ) {
+    print("# _________________________________________")
+    print("#\n# \(name)")
     for testCase in testCases {
       let result = algorithm(testCase.input)
       let testDescription = testCase.description ?? "\(name) Test"
-      print("#\n# \(testDescription) \n# Input: \(testCase.input)\n# Output: \(result)")
+      print("#\n#   \(testDescription) \n#   Input: \(testCase.input)\n#   Output: \(result)\n#")
       XCTAssertEqual(
         result,
         testCase.expected,
-        "\(testDescription) failed: expected \(testCase.expected), got \(result)"
+        " # \(testDescription) failed: expected \(testCase.expected), got \(result)"
       )
     }
   }
