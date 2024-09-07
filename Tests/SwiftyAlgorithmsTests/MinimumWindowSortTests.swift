@@ -18,6 +18,11 @@ final class MinimumWindowSortTests: XCTestCase {
       .init([1, 2, 5, 3, 7, 10, 9, 12], 5)
     ]
     
-    testAlgorithm(name: "Minimum Window Sort", with: testCases) { findMinimumWindowSort(arr: $0) }
+    testAlgorithm(
+      name: "Minimum Window Sort",
+      with: testCases
+    ) {
+      findMinimumWindowSort(arr: $0)
+    }
   }
 }
