@@ -19,12 +19,6 @@ struct AlgorithmTestCase<Input, Output: Comparable> {
     self.expected = expected
     self.description = description
   }
-  
-  init(_ input: Input, _ expected: Output) {
-    self.input = input
-    self.expected = expected
-    self.description = nil
-  }
 }
 
 extension XCTestCase {
@@ -43,11 +37,21 @@ extension XCTestCase {
     for testCase in testCases {
       let result = algorithm(testCase.input)
       let testDescription = testCase.description ?? "\(name) Test"
+      print("#\n# \(testDescription) \n# Input: \(testCase.input)\n# Output: \(result)")
       XCTAssertEqual(
         result,
         testCase.expected,
         "\(testDescription) failed: expected \(testCase.expected), got \(result)"
       )
     }
+  }
+}
+
+// Light init for writing test cases faster
+extension AlgorithmTestCase {
+  init(_ input: Input, _ expected: Output, _ description: String? = nil) {
+    self.input = input
+    self.expected = expected
+    self.description = description
   }
 }
