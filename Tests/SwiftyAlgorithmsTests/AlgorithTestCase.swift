@@ -36,14 +36,18 @@ extension XCTestCase {
   ) {
     print("# _________________________________________")
     print("#\n# \(name)")
-    for testCase in testCases {
+    for (i, testCase) in testCases.enumerated() {
+      print("#\n# Test: \(i + 1): \n#   Input: \(testCase.input) \n#   Expected: \(testCase.expected)")
       let result = algorithm(testCase.input)
-      let testDescription = testCase.description ?? "\(name) Test"
-      print("#\n#   \(testDescription) \n#   Input: \(testCase.input)\n#   Output: \(result)\n#")
+      let isPassed = result == testCase.expected
+      let resultString = isPassed ? "✅ Passed" : "❌ Failed"
+      let testDescription = testCase.description ?? ""
+      print("#   Output: \(result)")
+      print("#   \(resultString)  - \(isPassed ? testDescription : "")")
       XCTAssertEqual(
         result,
         testCase.expected,
-        " # \(testDescription) failed: expected \(testCase.expected), got \(result)"
+        "\(testDescription) failed: expected \(testCase.expected), got \(result)"
       )
     }
   }
