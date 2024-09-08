@@ -11,10 +11,10 @@ extension Dictionary where Key == Character, Value == Int {
     self[char, default: 0] += 1
   }
   
-  mutating func decrement(_ char: Character) {
+  mutating func decrement(_ char: Character, removeIfReachesZero: Bool = true) {
     if let charCount = self[char], charCount > 1 {
       self[char] = charCount - 1
-    } else {
+    } else if removeIfReachesZero {
       removeValue(forKey: char)
     }
   }
