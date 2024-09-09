@@ -7,15 +7,28 @@
 
 import Foundation
 extension Dictionary where Key == Character, Value == Int {
-  mutating func increment(_ char: Character) {
-    self[char, default: 0] += 1
+  enum RemovalStrategy {
+    case removeIfReachesZero
+    case allowNegatives
   }
   
-  mutating func decrement(_ char: Character, removeIfReachesZero: Bool = true) {
-    if let charCount = self[char], charCount > 1 {
-      self[char] = charCount - 1
-    } else if removeIfReachesZero {
+  @discardableResult
+  mutating func increment(_ char: Character) -> Int{
+    let newFreq = self[char, default: 0] + 1
+    self[char] = newFreq
+    return newFreq
+  }
+  
+  @discardableResult
+  mutating func decrement(_ char: Character, strategy: RemovalStrategy = .removeIfReachesZero) -> Int {
+    guard let charCount = self[char] else { return 0 }
+    switch (strategy, charCount) {
+    case (.removeIfReachesZero, 1):
       removeValue(forKey: char)
+      return 0
+    default:
+      self[char] = charCount - 1
+      return charCount - 1
     }
   }
 }
