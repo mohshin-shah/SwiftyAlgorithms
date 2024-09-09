@@ -9,7 +9,7 @@ import Foundation
 import XCTest
 
 /// Represents a generic test case for an algorithm with multiple inputs.
-struct AlgorithmTestCase<Input, Output: Comparable> {
+struct AlgorithmTestCase<Input, Output: Equatable> {
   let input: Input
   let expected: Output
   let description: String?
@@ -29,7 +29,7 @@ extension XCTestCase {
   ///   - algorithmName: A human-readable name for the algorithm being tested.
   ///   - testCases: A list of test cases containing inputs (as tuples or structs) and expected outputs.
   ///   - algorithm: A closure that runs the algorithm with the given input.
-  func testAlgorithm<Input, Output: Comparable>(
+  func testAlgorithm<Input, Output: Equatable>(
     name: String,
     with testCases: [AlgorithmTestCase<Input, Output>],
     algorithm: (Input) -> Output
