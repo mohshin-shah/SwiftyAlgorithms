@@ -13,7 +13,7 @@ extension Dictionary where Key == Character, Value == Int {
   }
   
   @discardableResult
-  mutating func increment(_ char: Character) -> Int{
+  mutating func increment(_ char: Character) -> Int {
     let newFreq = self[char, default: 0] + 1
     self[char] = newFreq
     return newFreq

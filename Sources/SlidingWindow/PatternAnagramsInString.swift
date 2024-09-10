@@ -27,14 +27,9 @@ func findPatternAnagrams(in string: String, pattern: String) -> [Int] {
   var result = [Int]()
   var windowStart = 0
   var matchCount = 0
-  
   let array = Array(string)
-  
   var patternMap: [Character: Int] = pattern.reduce(into: [:]) { $0[$1, default: 0] += 1 }
   
-  // =str="abb cabc", pattern="abc"
-  // a: 1, b: 1, c: 1
-
   for (windowEnd, char) in array.enumerated() {
     let charFreq = patternMap.decrement(char, strategy: .allowNegatives)
     if charFreq == 0 {
