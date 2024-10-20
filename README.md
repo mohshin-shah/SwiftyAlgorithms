@@ -67,6 +67,11 @@ class MaximumSumSubarrayTests: XCTestCase {
 
 The `AlgorithmTestCase` structure helps in defining inputs, expected outputs, and an optional description for each test case. The `testAlgorithm` function then runs through the test cases and prints a summary of the results, making it easy to debug or verify your algorithm.
 
+## Useful Debug Log:
+`AlgorithmTestCase` and `testAlgorithm` takes care of providing a verbose logging for testcases, which algorithm that log belong to and proper input and expecte data along with the test result, if it passed or failed. You may easily search in the log which test cases failed.
+<img width="1300" alt="demo" src="https://github.com/user-attachments/assets/5c56dd7a-a66d-4968-86b3-18bd6adc03b8">
+
+
 ## Contributing
 
 ### Using GitHub Projects
