@@ -34,7 +34,7 @@ The following categories of algorithms have been implemented:
 To use the `SwiftyAlgorithms` package in your project, clone this repository and add it to your Xcode project or Swift Package Manager.
 
 ```bash
-git clone https://github.com/your-username/SwiftyAlgorithms.git
+git clone https://github.com/mohshin-shah/SwiftyAlgorithms.git
 ```
 
 ## Running Unit Tests
