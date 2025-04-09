@@ -29,7 +29,7 @@ import Foundation
  nums[i] is either 0, 1, or 2.
  */
 
-func dutchNationalFlag(_ nums: inout [Int]) -> [Int] {
+func dutchNationalFlag(_ nums: inout [Int]) {
   
   var k = nums.endIndex - 1
   var i = 0
@@ -59,6 +59,4 @@ func dutchNationalFlag(_ nums: inout [Int]) -> [Int] {
     default: break
     }
   }
-  
-  return nums
 }
